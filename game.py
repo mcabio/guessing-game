@@ -33,31 +33,27 @@ def guessing_game(guess):
     while True:
         secret_num = random.randint(1,100)
         print()
-        guess = int(input("Guess a number between 1 to 100. >>> "))
         guesses = 0 # This counts how many guesses it takes for player to get to the correct number
         
-
-        while secret_num != guess:
+        while True:
+            guess = int(input("Guess a number between 1 to 100. >>> "))
+            guesses += 1
+            secret_num != guess:
             if secret_num < guess:
-                guesses += 1
-                guess = int(input("Guess again, the secret number is lower. >>> "))
+                    guess = int(input("Guess again, the secret number is lower. >>> "))
             elif secret_num > guess:
-                guesses += 1
-                guess = int(input("Guess again, the secret number is higher. >>> "))
+                    guess = int(input("Guess again, the secret number is higher. >>> "))
 
-        print(f"CONGRATULATIONS, YOU GUESSED CORRECTLY! You guessed {guesses} times to get to the secret number!")
-        scores.append(guesses)
-        print()
+            print(f"CONGRATULATIONS, YOU GUESSED CORRECTLY! You guessed {guesses} times to get to the secret number!")
+            scores.append(guesses)
+            print()
 
-        replay = input("Would you like to play again? y/n? >>> ")
-        if replay.lower() != "y": # if replay doesn't equal "y", the loop exits
-            best_score = scores[0]
-            for i in scores[1:]:
-                if i < best_score:
-                    best_score = i
-            print("Thanks for playing!")
-            print(f"You're best score is {best_score}")
-            break
+            replay = input("Would you like to play again? y/n? >>> ")
+            if replay.lower() != "y": # if replay doesn't equal "y", the loop exits
+                best_score = min(scores)
+                print("Thanks for playing!")
+                print(f"You're best score is {best_score}")
+                break
 
 guessing_game(50)
 
